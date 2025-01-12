@@ -12,7 +12,7 @@ These playbooks are for test and development to enable a K3s cluster up and runn
 1. site.yml - main playbook.
 2. update_ubuntu.yml - patches the VM's to the latest patch level (optional).
 3. update_hosts.yml - updates the hosts with static IP's if no DNS available, edit the hosts file under files firectory (optional)
-4. install_k3s.yml - install's k3s - master and ndoes.
+4. install_k3s.yml - install's k3s - master and nodes.
 5. install_helm - install helm charts (optional).
 
 ## System requirements
