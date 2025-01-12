@@ -9,17 +9,17 @@ These playbooks are for test and development to enable a K3s cluster up and runn
 - [x] Highly Recomended [Ansible Collections](https://docs.ansible.com/ansible/latest/collections_guide/collections_installing.html)
 - [X] Test deployment environment must have Ansible Core 2.14.17+
 
-1. site.yml - main playbook
-2. update_ubuntu.yml - patches the VM's to the latest patch level (optional)
+1. site.yml - main playbook.
+2. update_ubuntu.yml - patches the VM's to the latest patch level (optional).
 3. update_hosts.yml - updates the hosts with static IP's if no DNS available, edit the hosts file under files firectory (optional)
-4. install_k3s.yml - install's k3s - master and ndoes
-5. install_helm - install helm charts (optional)
+4. install_k3s.yml - install's k3s - master and ndoes.
+5. install_helm - install helm charts (optional).
 
 ## System requirements
 
 - [X] Master and nodes should have password-less SSH access (Optional)
 - [x] Secure your Ansible connection: Ensure that Ansible can connect to your hosts. You might need to set up SSH keys and copy them to your hosts
-- [X] Ubuntu 22.04 Server  x 1 Master (Control Plane) 2GB Ram 2 Cores, 2 x Nodes 2GB Ram 2 Cores.
+- [X] Ubuntu 22.04 Server  x 1 Master (Control Plane) 2GB Ram 2 Cores, 2 x Nodes 2GB Ram 2 Cores
 
 Processor architecture:
 
@@ -64,7 +64,7 @@ ansible-playbook -i inventory site.yml -v
 ssh ubuntu@master_ip
 ```
 
-## Check Cluster and Helm are running
+## Check Cluster are up and running
 The kubectl get svc command is used to list all the services in a Kubernetes cluster. This command provides a table of the most important information about the specified services, such as their names, types, cluster IPs, external IPs, ports, and more.
 
 ```
