@@ -1,0 +1,38 @@
+---
+# tasks file for patching Ubuntu and Debian
+########################################################################################
+#                                                                                      #
+# --                                                                                   #
+# Author: Joey Allen                                                                   #
+#                                                                                      #
+########################################################################################
+#  Purpose: Playbook to perform 'apt update' on selected hosts.                        #
+#           ALL the packages with updates on the enabled repositories will be updated. #
+#                                                                                      #
+########################################################################################
+### Supported OS: Ubuntu and Debian                                                    #
+########################################################################################
+
+- name: Tasks Patch Ubuntu Linux
+  hosts: '*'
+  become: true
+
+  tasks:
+    - name: Install updates on Ubuntu
+      ansible.builtin.apt:
+        name: '*'
+        update_cache: true
+        cache_valid_time: 3600
+        force_apt_get: true
+        state: latest
+      tags:
+        - update-ubuntu
+
+    - name: Upgrade the OS (apt-get dist-upgrade)
+      apt:
+        upgrade: dist
+        autoremove: true
+        autoclean: true
+      tags:
+        - upgrade-dist
+...

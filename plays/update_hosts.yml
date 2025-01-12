@@ -1,0 +1,53 @@
+---
+
+- hosts: master
+  become: true
+
+  tasks:
+
+  - name: Copy hosts file with owner and permissions
+    ansible.builtin.copy:
+      src: "{{ item.src }}"
+      dest: "{{ item.dest }}"
+      owner: root
+      group: root
+      mode: '0644'
+      remote_src: false
+    with_items:
+      - src: ./files/k3s1/hosts
+        dest: /etc/hosts
+
+- hosts: k3s2
+  become: true
+
+  tasks:
+
+  - name: Copy hosts file with owner and permissions
+    ansible.builtin.copy:
+      src: "{{ item.src }}"
+      dest: "{{ item.dest }}"
+      owner: root
+      group: root
+      mode: '0644'
+      remote_src: false
+    with_items:
+      - src: ./files/k3s2/hosts
+        dest: /etc/hosts
+
+- hosts: k3s3
+  become: true
+
+  tasks:
+
+  - name: Copy hosts file with owner and permissions
+    ansible.builtin.copy:
+      src: "{{ item.src }}"
+      dest: "{{ item.dest }}"
+      owner: root
+      group: root
+      mode: '0644'
+      remote_src: false
+    with_items:
+      - src: ./files/k3s3/hosts
+        dest: /etc/hosts
+...
