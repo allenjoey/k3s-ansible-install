@@ -117,4 +117,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## Author Information
 
-[Author: Joey Allen](https://github.com/allen-joey)
+[Author: K3S3](https://github.com/k3s3)
