@@ -108,6 +108,10 @@ sudo helm install myjenkins jenkins/jenkins
 - Adjust the playbook as needed for your specific environment (e.g., use different users, specify custom paths, etc.)
 - Test the playbook on a non-production environment before applying it to your production servers
 - This setup will install K3s on the specified servers and agents, forming a K3s cluster managed by Ansible
+- Added a Jenkins file (You might need to run see below from your Ansible/Jenkins server)
+```
+runuser -u jenkins ansible-galaxy collection install kubernetes.core
+```
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
