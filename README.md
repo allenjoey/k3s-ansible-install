@@ -130,4 +130,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## Author Information
 
-[Author: K3S3](https://github.com/k3s3)
+[Author: Joey A](https://github.com/k3s3)
