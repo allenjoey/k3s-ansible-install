@@ -113,6 +113,15 @@ sudo helm install myjenkins jenkins/jenkins
 runuser -u jenkins ansible-galaxy collection install kubernetes.core
 ```
 
+# Cluster Access
+## Accessing the Cluster from Outside with kubectl
+[Docs K3S](https://docs.k3s.io/cluster-access)
+Copy /etc/rancher/k3s/k3s.yaml on your machine located outside the cluster as ~/.kube/config. Then replace the value of the server field with the IP or name of your K3s server. kubectl can now manage your K3s cluster.
+
+```
+kubectl config view
+```
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 

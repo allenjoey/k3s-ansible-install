@@ -10,5 +10,5 @@ master
 node
 
 [k3s_cluster:vars]
-ansible_ssh_user=user1
-ansible_ssh_pass=a089147618
+ansible_ssh_user=
+ansible_ssh_pass=

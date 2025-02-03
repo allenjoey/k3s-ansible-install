@@ -1,6 +1,6 @@
 ---
 
-- hosts: master
+- hosts: localhost
   gather_facts: true
   become: true
 
