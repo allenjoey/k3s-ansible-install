@@ -44,7 +44,7 @@ master
 node
 
 [k3s_cluster:vars]
-ansible_ssh_user=ubuntu
+ansible_ssh_user=
 ansible_ssh_pass=
 ```
 Start provisioning of the Kubernetes cluster using the following command:
