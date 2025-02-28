@@ -68,14 +68,15 @@ ssh ubuntu@master_ip
 The kubectl get svc command is used to list all the services in a Kubernetes cluster. This command provides a table of the most important information about the specified services, such as their names, types, cluster IPs, external IPs, ports, and more.
 
 ```
-sudo kubectl get service 
-sudo kubectl get svc 
+kubectl get service 
+kubectl get svc 
 
-sudo kubectl get all --all-namespaces
-sudo kubectl get pods --all-namespaces -o wide
-sudo kubectl get nodes
-sudo kubectl get nodes -o wide
-sudo kubectl get nodes --show-labels=true
+kubectl get all --all-namespaces
+kubectl get pods --all-namespaces
+kubectl get pods --all-namespaces -o wide
+kubectl get nodes
+kubectl get nodes -o wide
+kubectl get nodes --show-labels=true
 kubectl config view --raw > ~/.kube/config # As root
 ```
 
@@ -83,24 +84,24 @@ kubectl config view --raw > ~/.kube/config # As root
 [Helm Cheatsheet](https://helm.sh/docs/intro/cheatsheet/)
 
 ```
-sudo helm --help
-sudo helm repo list
+helm --help
+helm repo list
 ```
 
 ## Install Helm manually
 ```
-sudo snap install helm --classic
-sudo helm repo add stable https://charts.helm.sh/stable
-sudo helm repo update
-sudo helm repo add "stable" "https://charts.helm.sh/stable" --force-update
-sudo helm repo list
+snap install helm --classic
+helm repo add stable https://charts.helm.sh/stable
+helm repo update
+helm repo add "stable" "https://charts.helm.sh/stable" --force-update
+helm repo list
 ```
 
 ## Example install Jenkins with Helm
 ```
-sudo helm repo add jenkins https://charts.jenkins.io
-sudo helm repo update
-sudo helm install myjenkins jenkins/jenkins
+helm repo add jenkins https://charts.jenkins.io
+helm repo update
+helm install myjenkins jenkins/jenkins
 ```
 
 ## Additional Notes
@@ -130,4 +131,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## Author Information
 
-[Author: Joey A](https://github.com/k3s3)
+[Author: Joey A](https://github.com/allenjoey)
