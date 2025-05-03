@@ -1,6 +1,6 @@
 # Build a Kubernetes cluster using k3s via Ansible
 
-These playbooks are for test and development to enable a K3s cluster up and running on Proxmox, Vagrant, VMware or Hyper-v, tested on Proxmox and Hyper-v.
+These playbooks are for test and development to enable a K3s cluster up and running on Proxmox, Vagrant, VMware or Hyper-V, tested on Proxmox and Hyper-V.
 
 ## K3s Ansible Playbooks
 
