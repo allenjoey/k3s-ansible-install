@@ -120,7 +120,7 @@ Retrieve the ArgoCD initial admin password.
 ```
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
-Log in to ArgoCD using the username admin and the password. Chnage the password in the UI click on user Info (UPDATE PASSWORD)
+Log in to ArgoCD using the username admin and the password. Change the password in the UI click on user Info (UPDATE PASSWORD)
 
 ## Example install Jenkins with Helm
 ```
