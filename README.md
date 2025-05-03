@@ -97,6 +97,31 @@ helm repo add "stable" "https://charts.helm.sh/stable" --force-update
 helm repo list
 ```
 
+## Install ArgoCD
+```
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+```
+After installation check all pods are created are running
+```
+kubectl get pods -n argocd
+```
+Access the ArgoCD UI by either by port-forwarding or exposing service as Nodeport. NodePort used here to expose.
+```
+kubectl expose service argocd-server --type=NodePort --name=argocd-server-nodeport -n argocd --port=80 --target-port=8080
+```
+Get the node port by checking the exposed service, argocd-server-nodeport.
+```
+kubectl get svc -n argocd
+```
+Access the ArgoCD web interface at https://IP:Nodeport
+
+Retrieve the ArgoCD initial admin password.
+```
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+```
+Log in to ArgoCD using the username admin and the password. Chnage the password in the UI click on user Info (UPDATE PASSWORD)
+
 ## Example install Jenkins with Helm
 ```
 helm repo add jenkins https://charts.jenkins.io
