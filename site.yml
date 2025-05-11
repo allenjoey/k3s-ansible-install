@@ -1,15 +1,11 @@
 ---
-# Import the playbooks
+# Playbook role for K3s cluster
 
-- name: updates
-  ansible.builtin.import_playbook: ./plays/update_ubuntu.yml
+- hosts: '*'
+  become: true
 
-- name: Update hosts file
-  ansible.builtin.import_playbook: ./plays/update_hosts.yml
-
-- name: Install K3s
-  ansible.builtin.import_playbook: ./plays/install_k3s.yml
-
-- name: Install Helm on the control plane k3s1
-  ansible.builtin.import_playbook: ./plays/install_helm.yml
+  roles:
+      - hosts
+      - patching
+      - k3s
 ...

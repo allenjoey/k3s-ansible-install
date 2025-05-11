@@ -1,5 +1,5 @@
 127.0.0.1 localhost
-127.0.1.1 k3s1
+127.0.1.1 k3s2
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     ip6-localhost ip6-loopback
@@ -9,6 +9,6 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
 # Linux Kubernetes
-192.168.1.17 k3s1.domain.local           k3s1 # kubernetes master
-192.168.1.18 k3s2.domain.local           k3s2 # kubernetes node-1
-192.168.1.19 k3s3.domain.local           k3s3 # kubernetes node-2
+0.0.0.0 k3s1.domain.local           k3s1 # kubernetes master
+0.0.0.0 k3s2.domain.local           k3s2 # kubernetes node-1
+0.0.0.0 k3s3.domain.local           k3s3 # kubernetes node-2

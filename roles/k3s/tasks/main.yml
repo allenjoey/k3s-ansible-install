@@ -1,7 +1,7 @@
 ---
-- hosts: master
-  become: true
-  tasks:
+# tasks file for k3s
+
+    # Master K3s control-plane
     - name: Install K3s server
       shell: |
         curl -sfL https://get.k3s.io | sh -
@@ -13,13 +13,13 @@
     - name: Set server IP address
       set_fact:
         server_ip: "{{ ansible_host }}"
+      when: ansible_hostname == 'master'
 
-- hosts: node
-  become: true
-  tasks:
+    # K3s Nodes
     - name: Install K3s agent
       shell: |
         curl -sfL https://get.k3s.io | K3S_URL=https://{{ hostvars['k3s1']['ansible_host'] }}:6443 K3S_TOKEN={{ hostvars['k3s1']['k3s_token'].stdout }} sh -
       args:
         executable: /bin/bash
+      when: ansible_hostname == 'node'
 ...

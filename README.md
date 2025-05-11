@@ -1,25 +1,24 @@
-# Build a Kubernetes cluster using k3s via Ansible
+# Build a Kubernetes cluster using k3s via Ansible roles
 
-These playbooks are for test and development to enable a K3s cluster up and running on Proxmox, Vagrant, VMware or Hyper-V, tested on Proxmox and Hyper-V.
+These Ansible playbooks roles are for test and development to enable a K3s cluster up and running on Proxmox, Vagrant, VMware or Hyper-V, tested on Proxmox and Hyper-V.
 
 ## K3s Ansible Playbooks
 
 - [X] Set up your Ansible environment
-- [X] Ensure you have Ansible installed on your control machine AKA ACS Server (the machine from which you will run the playbooks)
+- [X] Ensure you have Ansible installed on your control machine AKA (ACS Server) (the machine from which you will run the playbooks)
 - [x] Highly Recomended [Ansible Collections](https://docs.ansible.com/ansible/latest/collections_guide/collections_installing.html)
 - [X] Test deployment environment must have Ansible Core 2.14.17+
 
-1. site.yml - main playbook.
-2. update_ubuntu.yml - patches the VM's to the latest patch level (optional).
-3. update_hosts.yml - updates the hosts with static IP's if no DNS available, edit the hosts file under files firectory (optional)
-4. install_k3s.yml - install's k3s - master and nodes.
-5. install_helm - install helm charts (optional).
+1. site.yml - main playbook
+2. Ansible role hosts - updates the hosts file with static ip and host names for the cluster (optional)
+3. Ansible role patching - updates the Ubuntu VM's latest updates
+4. Ansible role k3s - install's k3s - master and nodes
 
 ## System requirements
 
 - [X] Master and nodes should have password-less SSH access (Optional)
 - [x] Secure your Ansible connection: Ensure that Ansible can connect to your hosts. You might need to set up SSH keys and copy them to your hosts
-- [X] Ubuntu 22.04 Server  x 1 Master (Control Plane) 2GB Ram 2 Cores, 2 x Nodes 2GB Ram 2 Cores
+- [X] Ubuntu 24.10+ Server  x 1 Master (Control Plane) 2GB Ram 2 Cores, 2 x Nodes 2GB Ram 2 Cores
 
 Processor architecture:
 
@@ -55,7 +54,6 @@ ansible '*' -m ping
 
 ansible-playbook site.yml -v
 ansible-playbook -i inventory site.yml -v
-
 ```
 
 ## To get access to your **Kubernetes** cluster just
@@ -80,20 +78,20 @@ kubectl get nodes --show-labels=true
 kubectl config view --raw > ~/.kube/config # As root
 ```
 
-## Check Helm is installed and running
-[Helm Cheatsheet](https://helm.sh/docs/intro/cheatsheet/)
-
-```
-helm --help
-helm repo list
-```
-
-## Install Helm manually
+## Install HELM Ubuntu
 ```
 snap install helm --classic
 helm repo add stable https://charts.helm.sh/stable
 helm repo update
 helm repo add "stable" "https://charts.helm.sh/stable" --force-update
+helm repo list
+```
+
+## Check HELM is installed and running
+[Helm Cheatsheet](https://helm.sh/docs/intro/cheatsheet/)
+
+```
+helm --help
 helm repo list
 ```
 
@@ -131,8 +129,8 @@ helm install myjenkins jenkins/jenkins
 
 ## Additional Notes
 - Ensure you have proper permissions and SSH access to all nodes
-- Adjust the playbook as needed for your specific environment (e.g., use different users, specify custom paths, etc.)
-- Test the playbook on a non-production environment before applying it to your production servers
+- Adjust the role as needed for your specific environment (e.g., use different users, specify custom paths, etc.)
+- Test the role on a non-production environment before applying it to your production servers
 - This setup will install K3s on the specified servers and agents, forming a K3s cluster managed by Ansible
 - Added a Jenkins file (You might need to run see below from your Ansible/Jenkins server)
 ```
@@ -156,4 +154,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## Author Information
 
-[Author: Joey A](https://github.com/allenjoey)
+[Author: Joey A](https://linkedin.com//in/allen-joey)

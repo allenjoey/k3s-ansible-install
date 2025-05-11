@@ -1,10 +1,6 @@
 ---
-
-- hosts: master
-  become: true
-
-  tasks:
-
+# tasks file for hosts
+ 
   - name: Copy hosts file with owner and permissions
     ansible.builtin.copy:
       src: "{{ item.src }}"
@@ -13,15 +9,11 @@
       group: root
       mode: '0644'
       remote_src: false
+    when: ansible_hostname == 'k3s1'
     with_items:
-      - src: ./files/k3s1/hosts
+      - src: hosts_k3s1
         dest: /etc/hosts
 
-- hosts: k3s2
-  become: true
-
-  tasks:
-
   - name: Copy hosts file with owner and permissions
     ansible.builtin.copy:
       src: "{{ item.src }}"
@@ -30,15 +22,11 @@
       group: root
       mode: '0644'
       remote_src: false
+    when: ansible_hostname == 'k3s2'
     with_items:
-      - src: ./files/k3s2/hosts
+      - src: hosts_k3s2
         dest: /etc/hosts
 
-- hosts: k3s3
-  become: true
-
-  tasks:
-
   - name: Copy hosts file with owner and permissions
     ansible.builtin.copy:
       src: "{{ item.src }}"
@@ -47,7 +35,8 @@
       group: root
       mode: '0644'
       remote_src: false
+    when: ansible_hostname == 'k3s3'
     with_items:
-      - src: ./files/k3s3/hosts
+      - src: hosts_k3s3
         dest: /etc/hosts
 ...
