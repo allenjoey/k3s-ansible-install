@@ -1,4 +1,4 @@
-# Build a Kubernetes cluster using k3s via Ansible roles
+# Simplify Kubernetes Cluster Setup with K3s and Ansible Automation
 
 These Ansible playbooks roles are for test and development to enable a K3s cluster up and running on Proxmox, Vagrant, VMware or Hyper-V, tested on Proxmox and Hyper-V.
 
@@ -12,7 +12,7 @@ These Ansible playbooks roles are for test and development to enable a K3s clust
 1. site.yml - main playbook
 2. Ansible role hosts - updates the hosts file with static ip and host names for the cluster (optional)
 3. Ansible role patching - updates the Ubuntu VM's latest updates
-4. Ansible role k3s - install's k3s - master and nodes
+4. Ansible role K3s - install's K3s - master and nodes
 
 ## System requirements
 
@@ -32,17 +32,17 @@ first, edit `inventory` to match the system information, for example:
 
 ```
 [master]
-k3s1 ansible_host=master_ip
+K3s1 ansible_host=master_ip
 
 [node]
-k3s2
-k3s3
+K3s2
+K3s3
 
-[k3s_cluster:children]
+[K3s_cluster:children]
 master
 node
 
-[k3s_cluster:vars]
+[K3s_cluster:vars]
 ansible_ssh_user=
 ansible_ssh_pass=
 ```
@@ -139,8 +139,8 @@ runuser -u jenkins ansible-galaxy collection install kubernetes.core
 
 # Cluster Access
 ## Accessing the Cluster from Outside with kubectl
-[Docs K3S](https://docs.k3s.io/cluster-access)
-Copy /etc/rancher/k3s/k3s.yaml on your machine located outside the cluster as ~/.kube/config. Then replace the value of the server field with the IP or name of your K3s server. kubectl can now manage your K3s cluster.
+[Docs K3S](https://docs.K3s.io/cluster-access)
+Copy /etc/rancher/K3s/K3s.yaml on your machine located outside the cluster as ~/.kube/config. Then replace the value of the server field with the IP or name of your K3s server. kubectl can now manage your K3s cluster.
 
 ```
 kubectl config view
