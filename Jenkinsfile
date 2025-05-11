@@ -3,10 +3,15 @@ pipeline {
     agent any
 
     triggers {
-        pollSCM 'H/5 * * * *'
+        pollSCM ''
     }
 
     stages {
+        stage('Verify Branch') {
+            steps {
+                echo "$GIT_BRANCH"
+            }
+        }
         stage('Execute Ansible Playbook') {
             steps {
                 ansiblePlaybook credentialsId: 'private-key',
@@ -21,7 +26,7 @@ pipeline {
     post {
         always {
             step([$class: 'Mailer', notifyEveryUnstableBuild: true,
-                recipients: 'your-email@email.com'])
+                recipients: 'your_email@your_domain'])
         }
     }
 }
