@@ -1,6 +1,6 @@
 # Simplify Kubernetes Cluster Setup with K3s and Ansible Automation
 
-These Ansible playbooks roles are for test and development to enable a K3s cluster up and running on Proxmox, Vagrant, VMware or Hyper-V, tested on Proxmox and Hyper-V.
+Ansible Playbooks for Testing and Development of K3s Clusters on Proxmox, Vagrant, VMware, and Hyper-V (Tested on Proxmox and Hyper-V)
 
 ## K3s Ansible Playbooks
 
