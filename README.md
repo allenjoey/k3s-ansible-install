@@ -75,7 +75,7 @@ kubectl get pods --all-namespaces -o wide
 kubectl get nodes
 kubectl get nodes -o wide
 kubectl get nodes --show-labels=true
-kubectl config view --raw > ~/.kube/config # As root
+kubectl config view --raw > ~/.kube/config # as root
 ```
 
 ## Install HELM Ubuntu
@@ -140,7 +140,7 @@ runuser -u jenkins ansible-galaxy collection install kubernetes.core
 # Cluster Access
 ## Accessing the Cluster from Outside with kubectl
 [Docs K3S](https://docs.K3s.io/cluster-access)
-Copy /etc/rancher/K3s/K3s.yaml on your machine located outside the cluster as ~/.kube/config. Then replace the value of the server field with the IP or name of your K3s server. kubectl can now manage your K3s cluster.
+Copy /etc/rancher/k3s/k3s.yaml on your machine located outside the cluster as ~/.kube/config. Then replace the value of the server field with the IP or name of your K3s server. kubectl can now manage your K3s cluster.
 
 ```
 kubectl config view
