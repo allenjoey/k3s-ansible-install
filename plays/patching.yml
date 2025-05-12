@@ -1,0 +1,15 @@
+---
+# tasks for patching
+
+- hosts: '*'
+  become: true
+  tasks:
+
+  - name: Install latest patches on Ubuntu
+    ansible.builtin.apt:
+      name: '*'
+      update_cache: true
+      force_apt_get: true
+      cache_valid_time: 3600    
+      state: latest
+...      

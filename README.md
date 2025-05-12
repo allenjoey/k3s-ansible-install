@@ -10,9 +10,9 @@ Ansible Playbooks for Testing and Development of K3s Clusters on Proxmox, Vagran
 - [X] Test deployment environment must have Ansible Core 2.14.17+
 
 1. site.yml - main playbook
-2. Ansible role hosts - updates the hosts file with static ip and host names for the cluster (optional)
-3. Ansible role patching - updates the Ubuntu VM's latest updates
-4. Ansible role K3s - install's K3s - master and nodes
+2. Ansible hosts - updates the hosts file with static ip and host names for the cluster (optional)
+3. Ansible patching - updates the Ubuntu VM's latest updates
+4. Ansible K3s - install's K3s - master and nodes
 
 ## System requirements
 

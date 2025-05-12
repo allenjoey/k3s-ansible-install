@@ -1,11 +1,10 @@
 ---
-# Playbook role for K3s cluster
+# Playbook imports for K3s cluster build
 
-- hosts: '*'
-  become: true
+- ansible.builtin.import_playbook: ./plays/hosts.yml
 
-  roles:
-      - hosts
-      - patching
-      - k3s
+- ansible.builtin.import_playbook: ./plays/patching.yml
+
+- ansible.builtin.import_playbook: ./plays/k3s.yml
+
 ...

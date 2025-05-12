@@ -1,9 +1,12 @@
 ---
-# tasks file for k3s
 
-    # Master K3s control-plane
+# Master K3s control-plane
+  - hosts: 'master'
+    become: true
+    tasks:
+
     - block:
-        - name: Install K3s server
+        - name: Install K3s server          
           shell: |
             curl -sfL https://get.k3s.io | sh -
           args:
@@ -12,16 +15,22 @@
           command: cat /var/lib/rancher/k3s/server/node-token
           register: k3s_token
         - name: Set server IP address
-          when: "'k3s1' in inventory_hostname"
           set_fact:
-            server_ip: "{{ ansible_host }}"          
+            server_ip: "{{ ansible_host }}"
+
+    - name: Pause for 15 seconds before starting again
+      ansible.builtin.pause:
+        seconds: 15
 
     # K3s Nodes
+  - hosts: 'node'
+    become: true
+    tasks:
+
     - block:
-        - name: Install K3s agent
+        - name: Install K3s agent          
           shell: |
             curl -sfL https://get.k3s.io | K3S_URL=https://{{ hostvars['k3s1']['ansible_host'] }}:6443 K3S_TOKEN={{ hostvars['k3s1']['k3s_token'].stdout }} sh -
           args:
-            executable: /bin/bash
-          when: "'k3s2','k3s3' in inventory_hostname"
+            executable: /bin/bash          
 ...
