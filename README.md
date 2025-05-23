@@ -72,6 +72,7 @@ kubectl get svc
 kubectl get all --all-namespaces
 kubectl get pods --all-namespaces
 kubectl get pods --all-namespaces -o wide
+kubectl describe pod <pod-name> -n <namespace>
 kubectl get nodes
 kubectl get nodes -o wide
 kubectl get nodes --show-labels=true
